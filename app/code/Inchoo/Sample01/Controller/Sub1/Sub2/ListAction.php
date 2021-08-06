@@ -7,6 +7,12 @@ namespace Inchoo\Sample01\Controller\Sub1\Sub2;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 
+/**
+ * Class ListAction
+ * @package Inchoo\Sample01\Controller\Sub1\Sub2
+ *
+ * Used as an example of subfolder handling by Magento routing
+ */
 class ListAction implements ActionInterface
 {
     /**

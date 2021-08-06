@@ -8,6 +8,12 @@ use Magento\Framework\App\ActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 
+/**
+ * Class Forward
+ * @package Inchoo\Sample01\Controller\Index
+ *
+ * Forwards to old action of index controller
+ */
 class Forward implements ActionInterface
 {
     /**

@@ -8,6 +8,9 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\Controller\ResultFactory;
 
 /**
+ * Class Old
+ * @package Inchoo\Sample01\Controller\Index
+ *
  * Old deprecated controller
  */
 class Old extends Action
