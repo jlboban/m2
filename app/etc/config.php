@@ -315,6 +315,7 @@ return [
         'Dotdigitalgroup_Chat' => 1,
         'Dotdigitalgroup_Sms' => 1,
         'Inchoo_FirstModule' => 1,
+        'Inchoo_Sample01' => 1,
         'Klarna_Core' => 1,
         'Klarna_Ordermanagement' => 1,
         'Klarna_Kp' => 1,
