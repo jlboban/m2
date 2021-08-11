@@ -8,6 +8,7 @@ $weightViewModel = $block->getData('view_model');
 <div class="weight-list-container">
     <ul class="weight-list">
         <?php foreach ($weightViewModel->getWeightUnits() as $weight) : ?>
+            <?php // phpcs:ignore ?>
             <li class="weight-list-item"><?= $escaper->escapeHtml($weight['label']) ?></li>
         <?php endforeach; ?>
     </ul>

@@ -6,4 +6,6 @@
 <h3>Template block</h3>
 
 <p><?= $block->escapeHtml(__('Translated string.')) ?></p>
+
+<?php // phpcs:ignore ?>
 <p><?= $escaper->escapeHtml('<script>alert("new escaper")</script>') ?></p>

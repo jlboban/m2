@@ -3,12 +3,15 @@
 /** @var \Magento\Framework\Escaper $escaper */
 ?>
 
+<?php // phpcs:ignore ?>
 <h3><?= $escaper->escapeHtml(__('Custom Template block')) ?></h3>
 
 <div>
+    <?php // phpcs:ignore ?>
     <p><?= $escaper->escapeHtml($block->getLoremIpsumString()) ?></p>
 </div>
 
 <?php if ($customerName = $block->getCustomerName()) :?>
+    <?php // phpcs:ignore ?>
     <p><?= $escaper->escapeHtml($customerName) ?></p>
 <?php endif; ?>
