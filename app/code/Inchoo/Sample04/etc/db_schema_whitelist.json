@@ -1,0 +1,16 @@
+{
+    "inchoo_news": {
+        "column": {
+            "entity_id": true,
+            "status": true,
+            "title": true,
+            "content": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "INCHOO_NEWS_TITLE": true
+        }
+    }
+}
