@@ -50,6 +50,7 @@ class Post implements HttpPostActionInterface, CsrfAwareActionInterface
         return $resultJson;
     }
 
+    // @codingStandardsIgnoreStart
     /**
      * @param RequestInterface $request
      * @return InvalidRequestException|null
@@ -67,4 +68,5 @@ class Post implements HttpPostActionInterface, CsrfAwareActionInterface
     {
         return true;
     }
+    // @codingStandardsIgnoreEnd
 }

@@ -8,6 +8,12 @@ use Magento\Framework\App\ActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 
+/**
+ * Class Redirect
+ * @package Inchoo\Sample01\Controller\Index
+ *
+ * Redirects to index page
+ */
 class Redirect implements ActionInterface
 {
     /**
