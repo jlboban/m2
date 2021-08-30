@@ -3,7 +3,7 @@
 /** @var \Magento\Framework\Escaper $escaper */
 ?>
 
-<h3>Template block</h3>
+<h3><?= $block->escapeHtml(__('Template block title.')) ?></h3>
 
 <p><?= $block->escapeHtml(__('Translated string.')) ?></p>
 

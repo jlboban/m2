@@ -3,7 +3,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block name="inchoo_sample03_weight" class="Inchoo\Sample03\Block\Weight" template="Inchoo_Sample03::custom/weight.phtml">
+            <block name="inchoo_sample03_weight" template="Inchoo_Sample03::custom/weight.phtml">
                 <arguments>
                     <argument name="view_model" xsi:type="object">Inchoo\Sample03\ViewModel\Weight</argument>
                 </arguments>
