@@ -4,6 +4,9 @@
 
 /** @var \Inchoo\Sample04\ViewModel\News $newsViewModel */
 $newsViewModel = $block->getData('news');
+
+/** @var \Inchoo\Sample04\ViewModel\Comment $commentViewModel */
+$commentViewModel = $block->getData('comments');
 ?>
 
 <?php if ($news = $newsViewModel->getCurrentNews()) : ?>
@@ -11,5 +14,32 @@ $newsViewModel = $block->getData('news');
     <p>Updated: <?= $escaper->escapeHtml($news->getData('updated_at')) ?></p>
     <p>Content: <?= /** @noEscape */ $news->getData('content') ?></p>
 
-    <a href="<?= $escaper->escapeUrl($block->getUrl('*/*/delete', ['id' => $news->getId()])) ?>"><?= $escaper->escapeHtml(__('Delete')) ?></a>
+    <a class="action primary" href="<?= $escaper->escapeUrl($block->getUrl('*/comment/create', ['id' => $news->getId()])) ?>"
+       style="border: none;">
+        <?= $escaper->escapeHtml(__('Add comment')) ?>
+    </a>
+    <a class="action primary"
+       href="<?= $escaper->escapeUrl($block->getUrl('*/*/delete', ['id' => $news->getId()])) ?>"
+       style="background-color: red; border: none;"><?= $escaper->escapeHtml(__('Delete news')) ?>
+    </a>
+
+    <?php if ($comments = $commentViewModel->getNewsComments($news->getEntityId())): ?>
+        <?php foreach ($comments as $comment): ?>
+            <div style="padding-top: 5rem;">
+                <p class="pt"><?= $comment->getContent(); ?></p>
+            </div>
+            <div class="">
+                <a href="<?= $escaper->escapeUrl($block->getUrl('*/comment/view', ['id' => $comment->getEntityId()])) ?>"
+                   style="padding-right: 2rem;">
+                    <?= $escaper->escapeHtml(__('View comment')) ?></a>
+                <a href="<?= $escaper->escapeUrl($block->getUrl('*/comment/delete', ['id' => $comment->getEntityId()])) ?>"
+                   style="color: red;">
+                    <?= $escaper->escapeHtml(__('Delete comment')) ?>
+                </a>
+            </div>
+            <hr>
+        <?php endforeach; ?>
+    <?php endif; ?>
 <?php endif; ?>
+
+

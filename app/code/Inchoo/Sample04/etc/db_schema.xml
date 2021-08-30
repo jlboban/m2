@@ -17,4 +17,16 @@
             <column name="title"/>
         </constraint>
     </table>
+
+    <table name="inchoo_news_comment" resource="default" engine="innodb" comment="News Comments Table">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="varchar" name="content" comment="Comment content"/>
+        <column xsi:type="int" name="news_id" unsigned="true" nullable="false" comment="News ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="INCHOO_NEWS_COMMENT_ID_INCHOO_NEWS_ID"
+                    table="inchoo_news_comment" column="news_id"
+                    referenceTable="inchoo_news" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
 </schema>

@@ -12,5 +12,16 @@
             "PRIMARY": true,
             "INCHOO_NEWS_TITLE": true
         }
+    },
+    "inchoo_news_comment": {
+        "column": {
+            "entity_id": true,
+            "content": true,
+            "news_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "INCHOO_NEWS_COMMENT_NEWS_ID_INCHOO_NEWS_ENTITY_ID": true
+        }
     }
 }

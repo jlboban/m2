@@ -12,6 +12,8 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 class News implements ArgumentInterface
 {
+    private const LIST_LIMIT = 5;
+
     /**
      * @var Registry
      */
@@ -20,17 +22,17 @@ class News implements ArgumentInterface
     /**
      * @var CollectionFactory
      */
-    protected $collectionFactory;
+    protected $newsCollectionFactory;
 
     /**
      * News constructor.
      * @param Registry $registry
-     * @param CollectionFactory $collectionFactory
+     * @param CollectionFactory $newsCollectionFactory
      */
-    public function __construct(Registry $registry, CollectionFactory $collectionFactory)
+    public function __construct(Registry $registry, CollectionFactory $newsCollectionFactory)
     {
         $this->registry = $registry;
-        $this->collectionFactory = $collectionFactory;
+        $this->newsCollectionFactory = $newsCollectionFactory;
     }
 
     /**
@@ -46,8 +48,10 @@ class News implements ArgumentInterface
      */
     public function getNewsList(): Collection
     {
-        $collection = $this->collectionFactory->create();
+        $collection = $this->newsCollectionFactory->create();
         $collection->setOrder('created_at');
+        $collection->getSelect()->limit(self::LIST_LIMIT);
+        $collection->getSelect()->where('status', 1);
 
         return $collection;
     }
