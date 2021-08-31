@@ -7,6 +7,12 @@ namespace Inchoo\Sample01\Controller\Index;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 
+/**
+ * Class Index
+ * @package Inchoo\Sample01\Controller\Index
+ *
+ * Displays a hardcoded string
+ */
 class Index implements ActionInterface
 {
     /**

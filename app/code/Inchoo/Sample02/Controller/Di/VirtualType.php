@@ -2,18 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Inchoo\Sample01\Controller\Sub1\Sub2;
+namespace Inchoo\Sample02\Controller\Di;
 
-use Magento\Framework\App\ActionInterface;
+use Inchoo\Sample02\Model\Sample;
+use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 
-/**
- * Class ListAction
- * @package Inchoo\Sample01\Controller\Sub1\Sub2
- *
- * Used as an example of subfolder handling by Magento routing
- */
-class ListAction implements ActionInterface
+class VirtualType implements HttpGetActionInterface
 {
     /**
      * @var ResultFactory
@@ -21,12 +16,19 @@ class ListAction implements ActionInterface
     protected $resultFactory;
 
     /**
-     * Index constructor.
-     * @param ResultFactory $resultFactory
+     * @var Sample
      */
-    public function __construct(ResultFactory $resultFactory)
+    protected $sample;
+
+    /**
+     * VirtualType constructor.
+     * @param ResultFactory $resultFactory
+     * @param Sample $sample
+     */
+    public function __construct(ResultFactory $resultFactory, Sample $sample)
     {
         $this->resultFactory = $resultFactory;
+        $this->sample = $sample;
     }
 
     /**
@@ -37,6 +39,6 @@ class ListAction implements ActionInterface
         /** @var \Magento\Framework\Controller\Result\Raw $resultRaw */
         $resultRaw = $this->resultFactory->create(ResultFactory::TYPE_RAW);
 
-        return $resultRaw->setContents('Ahoy');
+        return $resultRaw->setContents($this->sample->getSerializedString());
     }
 }

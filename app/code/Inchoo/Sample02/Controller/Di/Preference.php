@@ -2,18 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Inchoo\Sample01\Controller\Sub1\Sub2;
+namespace Inchoo\Sample02\Controller\Di;
 
-use Magento\Framework\App\ActionInterface;
+use Inchoo\Sample02\Model\Preference\DummyInterface;
+use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 
-/**
- * Class ListAction
- * @package Inchoo\Sample01\Controller\Sub1\Sub2
- *
- * Used as an example of subfolder handling by Magento routing
- */
-class ListAction implements ActionInterface
+class Preference implements HttpGetActionInterface
 {
     /**
      * @var ResultFactory
@@ -21,12 +16,19 @@ class ListAction implements ActionInterface
     protected $resultFactory;
 
     /**
-     * Index constructor.
-     * @param ResultFactory $resultFactory
+     * @var DummyInterface
      */
-    public function __construct(ResultFactory $resultFactory)
+    protected $dummy;
+
+    /**
+     * Preference constructor.
+     * @param ResultFactory $resultFactory
+     * @param DummyInterface $dummy
+     */
+    public function __construct(ResultFactory $resultFactory, DummyInterface $dummy)
     {
         $this->resultFactory = $resultFactory;
+        $this->dummy = $dummy;
     }
 
     /**
@@ -37,6 +39,6 @@ class ListAction implements ActionInterface
         /** @var \Magento\Framework\Controller\Result\Raw $resultRaw */
         $resultRaw = $this->resultFactory->create(ResultFactory::TYPE_RAW);
 
-        return $resultRaw->setContents('Ahoy');
+        return $resultRaw->setContents($this->dummy->getClassName());
     }
 }
