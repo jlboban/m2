@@ -86,7 +86,6 @@ class Create implements HttpGetActionInterface
             $this->messageManager->addSuccessMessage(__('%1 successfully created!', $news->getTitle()));
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
-            return $resultRedirect;
         }
 
         return $resultRedirect;

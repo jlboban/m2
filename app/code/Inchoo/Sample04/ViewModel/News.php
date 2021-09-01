@@ -50,8 +50,8 @@ class News implements ArgumentInterface
     {
         $collection = $this->newsCollectionFactory->create();
         $collection->setOrder('created_at');
-        $collection->getSelect()->limit(self::LIST_LIMIT);
-        $collection->getSelect()->where('status', 1);
+        $collection->setPageSize(self::LIST_LIMIT);
+        $collection->addFilter('status', 1);
 
         return $collection;
     }

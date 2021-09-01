@@ -68,15 +68,19 @@ class Delete implements HttpGetActionInterface
         $comment = $this->commentFactory->create();
         $this->commentResource->load($comment, $commentId);
 
+        if (!$comment->getEntityId()){
+            $resultForward = $this->resultFactory->create(ResultFactory::TYPE_FORWARD);
+            return $resultForward->forward('noroute');
+        }
+
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-        $resultRedirect->setPath("*/news/view/id/{$comment->getData('news_id')}");
+        $resultRedirect->setPath('*/news/view/id/', ['id' => $comment->getData('news_id')]);
 
         try {
             $this->commentResource->delete($comment);
             $this->messageManager->addSuccessMessage(__('Successfully deleted comment!'));
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
-            return $resultRedirect;
         }
 
         return $resultRedirect;

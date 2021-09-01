@@ -66,17 +66,21 @@ class Delete implements HttpGetActionInterface
         }
 
         $news = $this->newsFactory->create();
-        $news->setEntityId($newsId);
+        $this->newsResource->load($news, $newsId);
+
+        if (!$news->getEntityId()){
+            $resultForward = $this->resultFactory->create(ResultFactory::TYPE_FORWARD);
+            return $resultForward->forward('noroute');
+        }
 
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         $resultRedirect->setPath('*/*/list');
 
         try {
             $this->newsResource->delete($news);
-            $this->messageManager->addSuccessMessage(__('Successfully deleted news!'));
+            $this->messageManager->addSuccessMessage(__('Successfully deleted %1!', $news->getTitle()));
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
-            return $resultRedirect;
         }
 
         return $resultRedirect;

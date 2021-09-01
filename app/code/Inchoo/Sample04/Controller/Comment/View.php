@@ -73,6 +73,6 @@ class View implements HttpGetActionInterface
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $resultPage->getConfig()->getTitle()->set($comment->getTitle());
 
-        return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+        return $resultPage;
     }
 }

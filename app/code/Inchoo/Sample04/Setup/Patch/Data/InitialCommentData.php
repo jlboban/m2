@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Inchoo\Sample04\Setup\Patch\Data;
 
+use Inchoo\Sample04\Model\ResourceModel\News\CollectionFactory;
 use Magento\Framework\Math\Random;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
@@ -21,22 +22,31 @@ class InitialCommentData implements DataPatchInterface
     protected $random;
 
     /**
+     * @var CollectionFactory
+     */
+    protected $newsCollectionFactory;
+
+    /**
      * InitialNewsData constructor.
      * @param ModuleDataSetupInterface $moduleDataSetup
      * @param Random $random
+     * @param CollectionFactory $newsCollectionFactory
      */
     public function __construct(
         ModuleDataSetupInterface $moduleDataSetup,
-        Random $random
-    ) {
+        Random $random,
+        CollectionFactory $newsCollectionFactory
+    )
+    {
         $this->moduleDataSetup = $moduleDataSetup;
         $this->random = $random;
+        $this->newsCollectionFactory = $newsCollectionFactory;
     }
 
     /**
      * @return string[]
      */
-    public static function getDependencies()
+    public static function getDependencies(): array
     {
         return [
             InitialNewsData::class
@@ -46,7 +56,7 @@ class InitialCommentData implements DataPatchInterface
     /**
      * @return string[]
      */
-    public function getAliases()
+    public function getAliases(): array
     {
         return [];
     }
@@ -55,12 +65,19 @@ class InitialCommentData implements DataPatchInterface
      * @return $this
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function apply()
+    public function apply(): ?self
     {
         $data = [];
+        $collection = $this->newsCollectionFactory->create();
+        $newsIds = $collection->getAllIds();
+
+        if (empty($newsIds)) {
+            return null;
+        }
+
         for ($i = 0; $i <= 100; $i++) {
             $data[] = [
-                'news_id' => $this->random::getRandomNumber(1, 10),
+                'news_id' => array_rand(array_flip($newsIds)),
                 'content' => $this->random->getRandomString(64)
             ];
         }

@@ -2,10 +2,10 @@
 /** @var \Magento\Framework\View\Element\Template $block */
 /** @var \Magento\Framework\Escaper $escaper */
 
-/** @var \Inchoo\Sample04\ViewModel\Comment $commentViewModel */
-$commentViewModel = $block->getData('comment');
+/** @var \Inchoo\Sample04\ViewModel\Comment $comment */
+$comment = $block->getData('comment');
 ?>
 
-<p>Content: <?= $commentViewModel->getComment()->getData('content'); ?></p>
+<p>Content: <?= $escaper->escapeHtml($comment->getContent()); ?></p>
 
 

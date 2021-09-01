@@ -25,7 +25,7 @@
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="entity_id"/>
         </constraint>
-        <constraint xsi:type="foreign" referenceId="INCHOO_NEWS_COMMENT_ID_INCHOO_NEWS_ID"
+        <constraint xsi:type="foreign" referenceId="INCHOO_NEWS_COMMENT_NEWS_ID_INCHOO_NEWS_ENTITY_ID"
                     table="inchoo_news_comment" column="news_id"
                     referenceTable="inchoo_news" referenceColumn="entity_id" onDelete="CASCADE"/>
     </table>

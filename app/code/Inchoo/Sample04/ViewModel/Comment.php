@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Inchoo\Sample04\ViewModel;
 
+use Inchoo\Sample04\Model\CommentFactory;
 use Inchoo\Sample04\Model\ResourceModel\Comment\Collection;
 use Inchoo\Sample04\Model\ResourceModel\Comment\CollectionFactory;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
@@ -26,12 +27,6 @@ class Comment implements ArgumentInterface
     public function __construct(CollectionFactory $commentCollectionFactory)
     {
         $this->commentCollectionFactory = $commentCollectionFactory;
-    }
-
-    public function getComment(): \Magento\Framework\DataObject
-    {
-        $commentCollection = $this->commentCollectionFactory->create();
-        return $commentCollection->getFirstItem();
     }
 
     /**
