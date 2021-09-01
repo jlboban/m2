@@ -72,6 +72,7 @@ class View implements HttpGetActionInterface
 
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $resultPage->getConfig()->getTitle()->set($comment->getTitle());
+        $resultPage->getLayout()->getBlock('inchoo_sample04_comment_view')->setData('comment', $comment);
 
         return $resultPage;
     }
