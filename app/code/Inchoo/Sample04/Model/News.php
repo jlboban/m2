@@ -15,8 +15,4 @@ class News extends AbstractModel
     {
         $this->_init(\Inchoo\Sample04\Model\ResourceModel\News::class);
     }
-
-    public function getNewsIds(){
-
-    }
 }
