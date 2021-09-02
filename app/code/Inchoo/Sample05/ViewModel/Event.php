@@ -6,7 +6,9 @@ namespace Inchoo\Sample05\ViewModel;
 
 use Inchoo\Sample05\Api\Data\EventInterface;
 use Inchoo\Sample05\Api\EventRepositoryInterface;
+use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Api\SortOrder;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
@@ -34,22 +36,30 @@ class Event implements ArgumentInterface
     protected $searchCriteriaBuilder;
 
     /**
+     * @var FilterBuilder
+     */
+    protected $filterBuilder;
+
+    /**
      * Event constructor.
      * @param RequestInterface $request
      * @param Registry $registry
      * @param EventRepositoryInterface $eventRepository
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param FilterBuilder $filterBuilder
      */
     public function __construct(
         RequestInterface $request,
         Registry $registry,
         EventRepositoryInterface $eventRepository,
-        SearchCriteriaBuilder $searchCriteriaBuilder
+        SearchCriteriaBuilder $searchCriteriaBuilder,
+        FilterBuilder $filterBuilder
     ) {
         $this->request = $request;
         $this->registry = $registry;
         $this->eventRepository = $eventRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->filterBuilder = $filterBuilder;
     }
 
     /**
@@ -91,6 +101,7 @@ class Event implements ArgumentInterface
             $this->searchCriteriaBuilder->setPageSize($pageSize);
         }
 
+        $this->searchCriteriaBuilder->addFilter(EventInterface::STATUS, 1, 'eq');
         $searchCriteria = $this->searchCriteriaBuilder->create();
 
         return $this->eventRepository->getList($searchCriteria)->getItems();
