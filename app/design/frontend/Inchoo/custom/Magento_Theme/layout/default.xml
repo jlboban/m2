@@ -1,0 +1,5 @@
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <referenceContainer name="content">
+        <block name="inchoo_sample03_content_additional" template="Inchoo_Sample03::default/content-additional.phtml"/>
+    </referenceContainer>
+</layout>

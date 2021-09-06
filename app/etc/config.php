@@ -317,6 +317,7 @@ return [
         'Inchoo_FirstModule' => 1,
         'Inchoo_Sample01' => 1,
         'Inchoo_Sample02' => 1,
+        'Inchoo_Sample03' => 1,
         'Inchoo_Sample05' => 1,
         'Inchoo_Sample06' => 1,
         'Inchoo_Sample07' => 1,

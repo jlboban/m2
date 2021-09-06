@@ -1,0 +1,5 @@
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <referenceContainer name="footer">
+        <block name="inchoo_sample03_footer_additional" template="Inchoo_Sample03::default/footer-additional.phtml"/>
+    </referenceContainer>
+</layout>
