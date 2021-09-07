@@ -91,7 +91,13 @@ class EventRepository implements EventRepositoryInterface
      */
     public function save(EventInterface $event): EventInterface
     {
-        // TODO: Implement save() method.
+        try {
+            $this->eventResource->save($event);
+        } catch (\Exception $e) {
+            throw new CouldNotSaveException(__($e->getMessage()));
+        }
+
+        return $event;
     }
 
     /**

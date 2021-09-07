@@ -91,6 +91,7 @@ class Event implements ArgumentInterface
             $this->searchCriteriaBuilder->setPageSize($pageSize);
         }
 
+        $this->searchCriteriaBuilder->addFilter(EventInterface::STATUS, 1, 'eq');
         $searchCriteria = $this->searchCriteriaBuilder->create();
 
         return $this->eventRepository->getList($searchCriteria)->getItems();
