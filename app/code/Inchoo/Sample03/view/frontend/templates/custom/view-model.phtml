@@ -1,0 +1,20 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
+/** @var Inchoo\Sample03\ViewModel\Custom $viewModel */
+$viewModel = $block->getData('view_model');
+?>
+
+<?php // phpcs:ignore ?>
+<h3><?= $escaper->escapeHtml(__('View Model')) ?></h3>
+
+<?php // phpcs:ignore ?>
+<p><?= $escaper->escapeHtml($viewModel->getStoreName()) ?></p>
+
+<div class="param-list">
+    <?php foreach ($viewModel->getRequestParams() as $key => $value) : ?>
+        <?php // phpcs:ignore ?>
+        <p><?= $escaper->escapeHtml($key) ?> => <?= $escaper->escapeHtml($value) ?></p>
+    <?php endforeach; ?>
+</div>

@@ -1,0 +1,11 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+
+<h3><?= $block->escapeHtml(__('Template block title.')) ?></h3>
+
+<p><?= $block->escapeHtml(__('Translated string.')) ?></p>
+
+<?php // phpcs:ignore ?>
+<p><?= $escaper->escapeHtml('<script>alert("new escaper")</script>') ?></p>
