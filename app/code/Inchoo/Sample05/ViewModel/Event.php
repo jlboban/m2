@@ -6,7 +6,6 @@ namespace Inchoo\Sample05\ViewModel;
 
 use Inchoo\Sample05\Api\Data\EventInterface;
 use Inchoo\Sample05\Api\EventRepositoryInterface;
-use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Registry;
@@ -35,30 +34,22 @@ class Event implements ArgumentInterface
     protected $searchCriteriaBuilder;
 
     /**
-     * @var FilterBuilder
-     */
-    protected $filterBuilder;
-
-    /**
      * Event constructor.
      * @param RequestInterface $request
      * @param Registry $registry
      * @param EventRepositoryInterface $eventRepository
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
-     * @param FilterBuilder $filterBuilder
      */
     public function __construct(
         RequestInterface $request,
         Registry $registry,
         EventRepositoryInterface $eventRepository,
-        SearchCriteriaBuilder $searchCriteriaBuilder,
-        FilterBuilder $filterBuilder
+        SearchCriteriaBuilder $searchCriteriaBuilder
     ) {
         $this->request = $request;
         $this->registry = $registry;
         $this->eventRepository = $eventRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->filterBuilder = $filterBuilder;
     }
 
     /**
