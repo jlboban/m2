@@ -70,9 +70,11 @@ class View implements HttpGetActionInterface
             return $resultForward->forward('noroute');
         }
 
+
+        $this->registry->register('comment', $comment);
+
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $resultPage->getConfig()->getTitle()->set($comment->getTitle());
-        $resultPage->getLayout()->getBlock('inchoo_sample04_comment_view')->setData('comment', $comment);
 
         return $resultPage;
     }

@@ -7,6 +7,7 @@ namespace Inchoo\Sample04\ViewModel;
 use Inchoo\Sample04\Model\CommentFactory;
 use Inchoo\Sample04\Model\ResourceModel\Comment\Collection;
 use Inchoo\Sample04\Model\ResourceModel\Comment\CollectionFactory;
+use Magento\Framework\Registry;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 /**
@@ -21,12 +22,26 @@ class Comment implements ArgumentInterface
     protected $commentCollectionFactory;
 
     /**
+     * @var Registry
+     */
+    protected $registry;
+
+    /**
      * News constructor.
      * @param CollectionFactory $commentCollectionFactory
      */
-    public function __construct(CollectionFactory $commentCollectionFactory)
+    public function __construct(CollectionFactory $commentCollectionFactory, Registry $registry)
     {
         $this->commentCollectionFactory = $commentCollectionFactory;
+        $this->registry = $registry;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getComment()
+    {
+        return $this->registry->registry('comment');
     }
 
     /**

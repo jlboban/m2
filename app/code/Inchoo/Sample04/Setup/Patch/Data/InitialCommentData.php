@@ -46,7 +46,7 @@ class InitialCommentData implements DataPatchInterface
     /**
      * @return string[]
      */
-    public static function getDependencies(): array
+    public static function getDependencies()
     {
         return [
             InitialNewsData::class
@@ -56,7 +56,7 @@ class InitialCommentData implements DataPatchInterface
     /**
      * @return string[]
      */
-    public function getAliases(): array
+    public function getAliases()
     {
         return [];
     }
@@ -65,21 +65,19 @@ class InitialCommentData implements DataPatchInterface
      * @return $this
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function apply(): ?self
+    public function apply()
     {
         $data = [];
-        $collection = $this->newsCollectionFactory->create();
-        $newsIds = $collection->getAllIds();
+        $query = $this->moduleDataSetup->getConnection()->select()->from('inchoo_news', ['entity_id']);
+        $newsIds = $query->query()->fetchAll();
 
-        if (empty($newsIds)) {
-            return null;
-        }
-
-        for ($i = 0; $i <= 100; $i++) {
-            $data[] = [
-                'news_id' => array_rand(array_flip($newsIds)),
-                'content' => $this->random->getRandomString(64)
-            ];
+        foreach($newsIds as $newsId) {
+            for ($i = 1; $i <= 10; $i++) {
+                $data[] = [
+                    'news_id'   => $newsId['entity_id'],
+                    'comment'  => $this->random->getRandomString(64)
+                ];
+            }
         }
 
         $tableName = $this->moduleDataSetup->getTable('inchoo_news_comment');
