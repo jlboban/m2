@@ -14,8 +14,11 @@ $productList = $block->getData('product_list');
 
     <p><?= /** @NoEscape */ __('Is Web Exclusive') ?>: <?= $block->escapeHtml($product->getAttributeText('web_exclusive')) ?></p>
 
+    <p><?= /** @NoEscape */ __('Brand') ?>: <?= $block->escapeHtml($product->getAttributeText('brand')) ?></p>
+
+    <p><?= /** @NoEscape */ __('Description') ?>: <?= $product->getDescription() ?></p>
+
     <?php $url = $block->getUrl('catalog/product/view', ['id' => $product->getId()]); ?>
     <p><?= /** @NoEscape */ __('URL') ?>: <a href="<?= $block->escapeUrl($url) ?>"><?= $block->escapeHtml($url) ?></a></p>
-
     <hr>
 <?php endforeach; ?>

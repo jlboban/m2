@@ -82,6 +82,11 @@ class CreateOibCustomerAttribute implements DataPatchInterface
 
         $this->createFormAttributeRelations($attributeId);
 
+        $eavSetup->updateAttribute($entityType, $attributeCode, [
+            'is_used_in_grid' => 1,
+            'is_filterable_in_grid' => 1
+        ]);
+
         return $this;
     }
 
