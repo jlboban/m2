@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Inchoo\Sample06\Controller\Adminhtml\Postcode;
 
@@ -32,6 +34,7 @@ class MassDelete extends \Magento\Backend\App\Action implements HttpPostActionIn
      * @param Context $context
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
+     * @param PostcodeRepository $postcodeRepository
      */
     public function __construct(
         Context            $context,

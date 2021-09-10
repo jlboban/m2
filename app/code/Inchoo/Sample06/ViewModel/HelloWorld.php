@@ -31,11 +31,17 @@ class HelloWorld implements ArgumentInterface
         return $this->config->getTitle() ?: 'Default Title';
     }
 
+    /**
+     * @return string
+     */
     public function getContent(): string
     {
         return $this->config->getContent() ?: 'Default content';
     }
 
+    /**
+     * @return string
+     */
     public function getCatalogSearchMetaRobots(): string
     {
         return $this->config->getCatalogSearchMetaRobots() ?: 'NOINDEX,FOLLOW';
