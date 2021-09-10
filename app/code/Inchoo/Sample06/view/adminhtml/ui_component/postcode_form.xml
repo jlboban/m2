@@ -56,7 +56,7 @@
                 <disabled>true</disabled>
             </settings>
         </field>
-        <field name="city" formElement="input" sortOrder="6">
+        <field name="city" formElement="input" sortOrder="7">
             <settings>
                 <label translate="true">City</label>
                 <validation>

@@ -1,7 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Inchoo\Sample06\Controller\Adminhtml\Postcode;
 
+use Inchoo\Sample06\Model\PostcodeRepository;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Backend\App\Action\Context;
@@ -10,7 +11,7 @@ use Inchoo\Sample06\Model\ResourceModel\Postcode\CollectionFactory;
 
 class MassDelete extends \Magento\Backend\App\Action implements HttpPostActionInterface
 {
-    const ADMIN_RESOURCE = 'Inchoo_Sample06::postcode';
+    const ADMIN_RESOURCE = 'Inchoo_Sample06::delete';
 
     /**
      * @var Filter
@@ -23,14 +24,24 @@ class MassDelete extends \Magento\Backend\App\Action implements HttpPostActionIn
     protected $collectionFactory;
 
     /**
+     * @var PostcodeRepository
+     */
+    protected $postcodeRepository;
+
+    /**
      * @param Context $context
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
      */
-    public function __construct(Context $context, Filter $filter, CollectionFactory $collectionFactory)
-    {
+    public function __construct(
+        Context            $context,
+        Filter             $filter,
+        CollectionFactory  $collectionFactory,
+        PostcodeRepository $postcodeRepository
+    ) {
         $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;
+        $this->postcodeRepository = $postcodeRepository;
         parent::__construct($context);
     }
 
@@ -44,7 +55,7 @@ class MassDelete extends \Magento\Backend\App\Action implements HttpPostActionIn
         $collectionSize = $collection->getSize();
 
         foreach ($collection as $postcode) {
-            $postcode->delete();
+            $this->postcodeRepository->delete($postcode);
         }
 
         $this->messageManager->addSuccessMessage(__('A total of %1 record(s) have been deleted.', $collectionSize));

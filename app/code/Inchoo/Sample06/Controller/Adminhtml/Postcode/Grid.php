@@ -10,7 +10,7 @@ use Magento\Framework\Controller\ResultFactory;
 
 class Grid extends Action implements HttpGetActionInterface
 {
-    const ADMIN_RESOURCE = 'Inchoo_Sample06::postcode';
+    const ADMIN_RESOURCE = 'Inchoo_Sample06::view';
 
     /**
      * @return \Magento\Framework\Controller\ResultInterface

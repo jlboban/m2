@@ -11,7 +11,7 @@ use Magento\Framework\Controller\ResultFactory;
 
 class Delete extends Action
 {
-    const ADMIN_RESOURCE = 'Inchoo_Sample06::postcode';
+    const ADMIN_RESOURCE = 'Inchoo_Sample06::delete';
 
     /**
      * @var PostcodeRepository

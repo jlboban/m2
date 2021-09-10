@@ -14,7 +14,7 @@ use Magento\Framework\Controller\ResultFactory;
 
 class Save extends Action implements HttpPostActionInterface
 {
-    const ADMIN_RESOURCE = 'Inchoo_Sample06::postcode';
+    const ADMIN_RESOURCE = 'Inchoo_Sample06::create';
 
     /**
      * @var PostcodeRepository

@@ -12,7 +12,7 @@ use Magento\Framework\Controller\ResultFactory;
 
 class Edit extends Action implements HttpGetActionInterface
 {
-    const ADMIN_RESOURCE = 'Inchoo_Sample06::postcode';
+    const ADMIN_RESOURCE = 'Inchoo_Sample06::update';
 
     /**
      * @var PostcodeRepository
