@@ -10,11 +10,11 @@ class CollectionPlugin
 {
     /**
      * @param Collection $subject
-     * @param $printQuery
-     * @param $logQuery
+     * @param bool $printQuery
+     * @param bool $logQuery
      * @return array
      */
-    public function beforeLoad(Collection $subject, $printQuery, $logQuery): array
+    public function beforeLoad(Collection $subject, bool $printQuery, bool $logQuery): array
     {
         return [false, $logQuery];
     }
