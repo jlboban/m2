@@ -39,6 +39,19 @@
         <columnsControls name="columns_controls"/>
         <paging name="listing_paging"/>
         <filters name="listing_filters"/>
+        <massaction name="listing_massaction">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="sample06/postcode/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
     </listingToolbar>
     <columns name="postcode_listing_columns">
         <selectionsColumn name="ids" sortOrder="0">
@@ -53,6 +66,12 @@
                 <filter>textRange</filter>
                 <label translate="true">ID</label>
                 <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="city" sortOrder="7">
+            <settings>
+                <label translate="true">City</label>
+                <filter>text</filter>
             </settings>
         </column>
         <column name="code" sortOrder="10">

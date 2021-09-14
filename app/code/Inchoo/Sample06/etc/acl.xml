@@ -9,6 +9,16 @@
                         <resource id="Inchoo_Sample06::hello_world" title="Inchoo Hello World" translate="title" sortOrder="80"/>
                     </resource>
                 </resource>
+                <resource id="Magento_Backend::system">
+                    <resource id="Magento_Backend::system_other_settings">
+                        <resource id="Inchoo_Sample06::postcode" title="Inchoo Postcode" sortOrder="10" >
+                            <resource id="Inchoo_Sample06::create" title="Create" sortOrder="50" />
+                            <resource id="Inchoo_Sample06::delete" title="Delete" sortOrder="100" />
+                            <resource id="Inchoo_Sample06::view" title="View" sortOrder="150" />
+                            <resource id="Inchoo_Sample06::edit" title="Edit" sortOrder="200" />
+                        </resource>
+                    </resource>
+                </resource>
             </resource>
         </resources>
     </acl>

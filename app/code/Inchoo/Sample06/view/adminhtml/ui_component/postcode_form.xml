@@ -56,6 +56,14 @@
                 <disabled>true</disabled>
             </settings>
         </field>
+        <field name="city" formElement="input" sortOrder="7">
+            <settings>
+                <label translate="true">City</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
         <field name="code" formElement="input" sortOrder="10">
             <settings>
                 <label translate="true">Code</label>
