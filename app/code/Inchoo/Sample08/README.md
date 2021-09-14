@@ -3,7 +3,7 @@
 ## TODO
 * **Events/Observers**
     * Examine how are custom events dispatched in `Inchoo\Sample08\Controller\Index\Event` controller.
-    * Examine how are observers subscribed to events in `events.xml` config file.
+    * Examine how are observers subscribed eto events in `events.xml` config file.
     * Examine `Inchoo\Sample08\Observer\CustomEventObserver` and `Inchoo\Sample08\Observer\CustomEventObjectObserver` 
       observer classes.
     * Use the `sales_quote_add_item` event to log the product name added to Cart. Find where is the event dispatched.
