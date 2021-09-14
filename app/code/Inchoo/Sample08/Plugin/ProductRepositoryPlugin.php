@@ -12,19 +12,11 @@ class ProductRepositoryPlugin
     /**
      * @param ProductRepositoryInterface $subject
      * @param ProductInterface $result
-     * @param string $sku
-     * @param bool $editMode
-     * @param int|null $storeId
-     * @param bool $forceReload
      * @return ProductInterface
      */
     public function afterGet(
         ProductRepositoryInterface $subject,
-        ProductInterface $result,
-        string $sku,
-        bool $editMode = false,
-        ?int $storeId = null,
-        bool $forceReload = false
+        ProductInterface $result
     ): ProductInterface {
         $productName = $result->getName() . 'AFTER';
 
@@ -35,19 +27,11 @@ class ProductRepositoryPlugin
     /**
      * @param ProductRepositoryInterface $subject
      * @param ProductInterface $result
-     * @param int $productId
-     * @param bool $editMode
-     * @param int|null $storeId
-     * @param bool $forceReload
      * @return ProductInterface
      */
     public function afterGetById(
         ProductRepositoryInterface $subject,
-        ProductInterface $result,
-        int $productId,
-        bool $editMode = false,
-        ?int $storeId = null,
-        bool $forceReload = false
+        ProductInterface $result
     ): ProductInterface {
         $productName = $result->getName() . 'AFTER';
 
