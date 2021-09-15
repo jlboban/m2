@@ -5,9 +5,9 @@
         <plugin name="inchoo_sample08" type="Inchoo\Sample08\Plugin\CalculatorPlugin"/>
     </type>
     <type name="Magento\Catalog\Model\ResourceModel\Product\Collection">
-        <plugin name="inchoo_sample08" type="Inchoo\Sample08\Plugin\CollectionPlugin" sortOrder="1"/>
+        <plugin name="inchoo_sample08" type="Inchoo\Sample08\Plugin\Catalog\Model\ResourceModel\Product\CollectionPlugin"/>
     </type>
     <type name="Magento\Customer\Setup\RecurringData">
-        <plugin name="inchoo_sample08" type="Inchoo\Sample08\Plugin\RecurringDataPlugin"/>
+        <plugin name="inchoo_sample08" type="Inchoo\Sample08\Plugin\Customer\Setup\RecurringDataPlugin"/>
     </type>
 </config>
