@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inchoo\Sample07\Setup\Patch\Data;
 
-use Magento\Customer\Api\CustomerMetadataInterface;
+use Magento\Customer\Api\AddressMetadataInterface;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
@@ -60,8 +60,8 @@ class UpdateMobileNumberAddressAttribute implements DataPatchInterface
         /** @var \Magento\Eav\Setup\EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create();
 
-        $attributeCode = 'customer_address';
-        $entityType = CustomerMetadataInterface::ENTITY_TYPE_CUSTOMER;
+        $attributeCode = 'mobile_number';
+        $entityType = AddressMetadataInterface::ENTITY_TYPE_ADDRESS;
         $attributeId = (int)$eavSetup->getAttributeId($entityType, $attributeCode);
 
         $this->createFormAttributeRelations($attributeId);
