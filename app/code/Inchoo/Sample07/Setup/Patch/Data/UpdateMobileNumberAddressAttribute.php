@@ -60,7 +60,7 @@ class UpdateMobileNumberAddressAttribute implements DataPatchInterface
         /** @var \Magento\Eav\Setup\EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create();
 
-        $attributeCode = 'mobile_number';
+        $attributeCode = 'customer_address';
         $entityType = CustomerMetadataInterface::ENTITY_TYPE_CUSTOMER;
         $attributeId = (int)$eavSetup->getAttributeId($entityType, $attributeCode);
 
