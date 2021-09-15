@@ -80,32 +80,6 @@ class CreateMobileNumberAddressAttribute implements DataPatchInterface
         $defaultGroupId = $eavSetup->getDefaultAttributeGroupId($entityType, $setId);
         $eavSetup->addAttributeToSet($entityType, $setId, $defaultGroupId, $attributeId);
 
-        $this->createFormAttributeRelations($attributeId);
-
         return $this;
-    }
-
-    /**
-     * @param int $attributeId
-     * @return void
-     */
-    protected function createFormAttributeRelations(int $attributeId): void
-    {
-        $formAttributeTable = $this->moduleDataSetup->getTable('customer_form_attribute');
-
-        $this->moduleDataSetup->getConnection()->delete($formAttributeTable, ['attribute_id = ?' => $attributeId]);
-
-        $usedInForms = [
-            'customer_address_edit',
-            'customer_register_address',
-            'adminhtml_customer_address'
-        ];
-
-        $formAttributeData = [];
-        foreach ($usedInForms as $formCode) {
-            $formAttributeData[] = ['form_code' => $formCode, 'attribute_id' => $attributeId];
-        }
-
-        $this->moduleDataSetup->getConnection()->insertMultiple($formAttributeTable, $formAttributeData);
     }
 }
