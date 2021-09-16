@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Inchoo\Sample07\Setup\Patch\Data;
 
-use Magento\Customer\Api\CustomerMetadataInterface;
+use Magento\Customer\Api\AddressMetadataInterface;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 
-class CreateOibCustomerAttribute implements DataPatchInterface
+class UpdateMobileNumberAddressAttribute implements DataPatchInterface
 {
     /**
      * @var EavSetupFactory
@@ -39,7 +39,9 @@ class CreateOibCustomerAttribute implements DataPatchInterface
      */
     public static function getDependencies()
     {
-        return [];
+        return [
+            CreateMobileNumberAddressAttribute::class
+        ];
     }
 
     /**
@@ -58,26 +60,9 @@ class CreateOibCustomerAttribute implements DataPatchInterface
         /** @var \Magento\Eav\Setup\EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create();
 
-        $attributeCode = 'oib';
-        $entityType = CustomerMetadataInterface::ENTITY_TYPE_CUSTOMER;
-        $setId = CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER;
-
-        $eavSetup->addAttribute($entityType, $attributeCode, [
-            'type'           => 'varchar',
-            'input'          => 'text',
-            'label'          => 'OIB',
-            'required'       => 0,
-            'user_defined'   => 1, // required for custom attributes
-            'system'         => 0, // required for custom attributes
-            'sort_order'     => 95, // position in a attribute group
-            'position'       => 95, // position in a adminhtml form
-            'validate_rules' => '{"input_validation":"other","max_text_length":11,"validate-digits":true}'
-        ]);
-
+        $attributeCode = 'mobile_number';
+        $entityType = AddressMetadataInterface::ENTITY_TYPE_ADDRESS;
         $attributeId = (int)$eavSetup->getAttributeId($entityType, $attributeCode);
-
-        $defaultGroupId = $eavSetup->getDefaultAttributeGroupId($entityType, $setId);
-        $eavSetup->addAttributeToSet($entityType, $setId, $defaultGroupId, $attributeId);
 
         $this->createFormAttributeRelations($attributeId);
 
@@ -95,9 +80,9 @@ class CreateOibCustomerAttribute implements DataPatchInterface
         $this->moduleDataSetup->getConnection()->delete($formAttributeTable, ['attribute_id = ?' => $attributeId]);
 
         $usedInForms = [
-            'customer_account_create',
-            'customer_account_edit',
-            'adminhtml_customer'
+            'customer_address_edit',
+            'customer_register_address',
+            'adminhtml_customer_address'
         ];
 
         $formAttributeData = [];
